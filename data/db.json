@@ -1,0 +1,62 @@
+{
+"users": [
+    {
+        "id": 1,
+        "name": "Alex",
+       "position": "SA"
+    },
+    {
+        "id": 2,
+        "name": "Sam",
+       "position": "Manager"
+    },
+    {
+        "id": 3,
+        "name": "Alice",
+       "position": "Seller"
+    },
+    {
+        "id": 4,
+        "name": "Bob",
+       "position": "Worker"
+    },
+    {
+        "id": 5,
+        "name": "Ann",
+       "position": "Accountant"
+    }
+],
+"todos": [
+    {
+        "id": 1,
+        "user": 1,
+        "todo": "Update servers", 
+        "status": true
+    },
+    {
+        "id": 2,
+        "user": 5,
+        "todo": "Count salary", 
+        "status": false
+    },
+    {
+        "id": 3,
+        "user": 5,
+        "todo": "Pay taxies", 
+        "status": false
+    },
+    {
+        "id": 4,
+        "user": 3,
+        "todo": "Call to client", 
+        "status": false
+    },
+    {
+        "id": 3,
+        "user": 4,
+        "todo": "Receive a parcel with goods from the supplier", 
+        "status": false
+    }
+]
+
+}

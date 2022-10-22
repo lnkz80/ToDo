@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 700px;
+}
+
+header {
+    background-color: rgb(172, 62, 172);
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.8em;    
+    font-family: sans-serif, "Microsoft New Tai Lue";    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    border-radius: 0 0 10px 10px;
+}
+
+header div {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+header .ico {
+    padding: 5px;
+    color:rgb(172, 62, 172);
+    background-color: #fff;
+    box-shadow: 3px 4px 1px rgba(0,0,0,.2);
+    line-height: 1em;
+}
+
+/* header .text {
+    line-height: 1.8em;
+} */
+
+main form {
+    display: flex;
+    flex-direction: column;    
+}
+
+main form div {    
+    margin-top: 10px;
+}
+
+main form div.confirmTodo {
+    align-self: center;
+}
+/* 
+main form .btn-bd-primary {
+    --bs-btn-bg: var(--bd-purple);
+} */
+
+main .todoContent {    
+    border: 3px solid  rgb(237, 194, 237);
+    border-radius: 10px;    
+    margin-top: 20px;
+    padding: 20px;
+    margin-left: 0;
+    list-style-type: none;
+    font-size: 1.2em;  
+}
+
+main .todoContent li {
+    padding: 7px;
+    border-bottom: 1px dashed #ccc;  
+}
+
+main .todoContent li {
+    color: #aaa;
+}
+
+main .todoContent li:hover .unchecked, main .todoContent li:hover {
+    color: rgb(0,0,0,.6);
+    cursor: pointer;
+}
+
+main .todoContent li:last-child {
+    border: none;
+}
+
+main .todoContent li i {
+    padding-right: 10px;
+}
+
+.checkedDone {
+    color: rgb(45, 189, 5);
+}
+
+.checked {
+    color: rgb(0,0,0,.6);
+}
+
+.unchecked {
+    color: #aaa;
+    cursor: pointer;
+}
+
+/* .chkbox:hover .unchecked, .chkbox .checked {
+    display: none;
+}
+
+.chkbox:hover .checked {
+    display: inline;
+} */
+
+/* .unchecked */
+
+.close {
+    color: rgba(0,0,0,.2);
+    margin-left: 7px;
+}
+
+.close:hover {
+    color: rgba(172, 62, 172,.8)
+}

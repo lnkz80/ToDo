@@ -1,0 +1,112 @@
+$base-color: rgb(172, 62, 172);
+$done-color: rgb(45, 189, 5);
+
+/* header .text {
+    line-height: 1.8em;
+} */
+/* 
+main form .btn-bd-primary {
+    --bs-btn-bg: var(--bd-purple);
+} */
+/* .chkbox:hover .unchecked, .chkbox .checked {
+    display: none;
+}
+
+.chkbox:hover .checked {
+    display: inline;
+} */
+/* .unchecked */
+html {
+    font-size: 14px;
+}
+body {
+	margin: 0;
+	padding: 0;	
+}
+.wrapper {
+	margin: 0 auto;
+    padding: 0 20px;
+	width: 700px;
+}
+header {
+	background-color: $base-color;
+	padding: 20px;
+	color: #fff;
+	text-align: center;
+	font-size: 1.8rem;
+	font-family: sans-serif, "Microsoft New Tai Lue";
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: stretch;
+	border-radius: 0 0 10px 10px;
+	div {
+		margin-right: 10px;
+		vertical-align: middle;
+	}
+	.ico {        
+		padding: 0.5rem;
+		color: $base-color;
+		background-color: #fff;
+		box-shadow: 3px 4px 1px rgba(0,0,0,.2);
+		line-height: 1rem;
+	}
+}
+main {
+	form {
+		display: flex;
+		flex-direction: column;
+		div {
+			margin-top: 10px;
+		}
+		div.confirmTodo {
+			align-self: center;
+		}
+	}
+	.todoContent {
+		border: 3px solid rgba($base-color, .3);
+		border-radius: 10px;
+		margin-top: 20px;
+		padding: 20px;
+		margin-left: 0;        
+		list-style-type: none;
+        // overflow: hidden;
+		font-size: 1.1rem;
+		li {
+            // padding: 7px;
+            text-indent: -13px;
+            text-align: justify;
+            padding: 7px 0px 7px 27px;
+			border-bottom: 1px dashed #ccc;
+			color: #aaa;            
+			&:hover {
+				.unchecked {
+					color: rgb(0,0,0,.6);
+					cursor: pointer;
+				}
+				color: rgb(0,0,0,.6);
+				cursor: pointer;
+			}
+			&:last-child {
+				border: none;
+			}
+			i {
+				padding-right: 10px;
+			}
+		}
+	}
+}
+.checkedDone {
+	color: $done-color;
+}
+.unchecked {
+	color: #aaa;
+	cursor: pointer;
+}
+.close {
+	color: rgba(0,0,0,.2);
+	margin-left: 20px;
+	&:hover {
+		color: rgba($base-color, .8);
+	}
+}
