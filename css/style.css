@@ -94,19 +94,14 @@ main .todoContent li i {
   padding-right: 10px;
 }
 
-.checkedDone {
+.todo-done {
   color: rgb(45, 189, 5);
 }
 
-.unchecked {
-  color: #aaa;
-  cursor: pointer;
-}
-
-.close {
+.todo-close {
   color: rgba(0, 0, 0, 0.2);
   margin-left: 20px;
 }
-.close:hover {
+.todo-close:hover {
   color: rgba(172, 62, 172, 0.8);
 }/*# sourceMappingURL=style.css.map */

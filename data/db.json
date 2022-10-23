@@ -43,7 +43,7 @@
         "id": 3,
         "user": 5,
         "todo": "Pay taxies", 
-        "status": false
+        "status": true
     },
     {
         "id": 4,

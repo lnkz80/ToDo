@@ -96,14 +96,14 @@ main {
 		}
 	}
 }
-.checkedDone {
+.todo-done {
 	color: $done-color;
 }
-.unchecked {
-	color: #aaa;
-	cursor: pointer;
-}
-.close {
+// .unchecked {
+// 	color: #aaa;
+// 	cursor: pointer;
+// }
+.todo-close {
 	color: rgba(0,0,0,.2);
 	margin-left: 20px;
 	&:hover {
