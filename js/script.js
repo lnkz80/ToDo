@@ -14,48 +14,26 @@ document.addEventListener("DOMContentLoaded", () => {
     return await res.json();
   };
 
-  //? Зробити одну універсальну функцію POST-PATCH-DELETE ======>
-  const postData = async (method, url, data = null) => {
-    const res = await fetch(url, {
-      method: method,
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
+//? Зробити одну універсальну функцію POST-PATCH-DELETE ======>  
+  const setData = async (method, url, id = null, data = null) => {
+    console.log(method, url, id, data);
+    const res = await fetch(
+      id?`${url}/${id}`:`${url}`, 
+      {
+        method: method,
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body : data ? JSON.stringify(data) : "",
+      }
+    );
     if (!res.ok) {
       throw new Error(`Couldn't fetch ${url}, status: ${res.status}`);
     }
     return await res.json();
-  };
+  };  
+//?<===========================================================================<<
 
-  const deleteData = async (url, id) => {
-    const res = await fetch(`${url}/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-type': 'application/json'
-      }    
-    });
-    if (!res.ok) {
-      throw new Error(`Couldn't fetch ${url}, status: ${res.status}`);
-    }
-    return await res.json();
-  };
-
-  const updateData = async (url, id, data) => {
-    const res = await fetch(`${url}/${id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(data)  
-    });
-    if (!res.ok) {
-      throw new Error(`Couldn't fetch ${url}, status: ${res.status}`);
-    }
-    return await res.json();
-  };
-//?===========================================================================<<
   // Render Data from server
   let users = [],    
   todos = []; 
@@ -84,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (todos.length !== 0) {
         todos.forEach(item => {
           objDomPlace.innerHTML += `
-          <li>
+          <li data-id=${item.id}>
           <i class="fa-regular ${item.status?'fa-square-check todo-done':'fa-square'}"></i>
           ${item.user}: ${item.todo}
           <i class="fa-solid fa-xmark todo-close"></i>
@@ -104,20 +82,24 @@ document.addEventListener("DOMContentLoaded", () => {
   
   //AddEventListeners
   const addListenerToTodos = (todoCollection) => {    
-//!Додати функціонал додавання в БД виконанних завдань та їх видалення
     for(let item of todoCollection) {
-//! розділити події по різних кнопках (чек, видалення) - можливо треба використати делегування подій
       item.addEventListener("click", function (e) {
-        if(!this.firstElementChild.classList.contains('todo-done')){
-          this.firstElementChild.classList.remove("fa-square");
-          this.firstElementChild.classList.add("fa-square-check", "todo-done");
-          console.log(this);   
-          // updateData(todosUrl, 1, {status: true});                 
-        } else {
-          this.firstElementChild.classList.add("fa-square");
-          this.firstElementChild.classList.remove("fa-square-check", "todo-done");
-          // updateData(todosUrl, 1, {status: false});  
-        }        
+        if (e.target && e.target.classList.contains("fa-square")){  
+          // console.log(e.target);           
+          e.target.classList.remove("fa-square");
+          e.target.classList.add("fa-square-check", "todo-done");          
+        //!Додати функціонал додавання в БД виконанних завдань та їх видалення
+      } else 
+      if (e.target && e.target.classList.contains("fa-square-check")){          
+        e.target.classList.remove("fa-square-check", "todo-done");
+        e.target.classList.add("fa-square");
+        //!Додати функціонал додавання в БД виконанних завдань та їх видалення
+        } else 
+        if (e.target && e.target.classList.contains("todo-close")){   
+        //! Зробити видалення запису і ререндеру списку тудушек  
+          // setData("DELETE", todosUrl, e.target.parentNode.dataset.id);
+          console.log(e.target.parentNode.dataset.id);
+        }    
       });
     }
   };

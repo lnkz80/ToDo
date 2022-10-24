@@ -56,12 +56,6 @@
       "user": 4,
       "todo": "Receive a parcel with goods from the supplier",
       "status": false
-    },
-    {
-      "id": 6,
-      "user": 3,
-      "todo": "Call to client",
-      "status": true
     }
   ]
 }
