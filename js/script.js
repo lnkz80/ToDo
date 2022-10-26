@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     confirmTodoBtn = addTodoForm.querySelector("#confirmTodoBtn"),
     todoList = document.querySelector(".todoContent");
   
-  const getData = async (url) => {
-    const res = await fetch(url);
+  const getData = async (url, id = null) => {
+    const res = await fetch(id?url/id:url);
     if (!res.ok) {
       throw new Error(`Couldn't fetch ${url}, status: ${res.status}`);
     }
@@ -18,8 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
 // ===== Універсальна функція POST-PATCH-DELETE ======>  
-  const setData = async (method, url, id = null, data = null) => {
-    console.log(method, url, id, data);
+  const setData = async (method, url, id = null, data = null) => {    
     const res = await fetch(
       id?`${url}/${id}`:`${url}`, 
       {
@@ -29,10 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         body : data ? JSON.stringify(data) : "",
       }
-    );
+      
+    );    
     if (!res.ok) {
       throw new Error(`Couldn't fetch ${url}, status: ${res.status}`);
     }
+    // if(method == "POST" || method == "DELETE") {
+      await renderTodos();
+    // }
     return await res.json();
   };  
   // ===================================================<
@@ -63,11 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
     try{
       todos = await getData(todosUrl);
       if (todos.length !== 0) {
-        todos.forEach(item => {
+        todos.forEach(item => {          
           todoList.innerHTML += `
           <li data-id=${item.id}>
           <i class="fa-regular ${item.status?'fa-square-check todo-done':'fa-square'}"></i>
-          ${item.user}: ${item.todo}
+          <span class="${item.status?'todo-done-light':''}"><i>${users[item.user-1].name}</i> <i class="fa-solid fa-arrow-right-long"></i> ${item.todo}</span>
           <i class="fa-solid fa-xmark todo-close"></i>
           </li>`;
         });
@@ -82,8 +85,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }       
   };
 
-  renderUsers();
-  renderTodos();  
+  const renderAll = async ()=>{
+    await renderUsers();
+    await renderTodos();  
+  };
+  
+  renderAll();
   
   //AddEventListeners
   const addListenerToTodos = (todoCollection) => {    
@@ -100,8 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
           setData("PATCH", todosUrl, e.target.parentNode.dataset.id, {status: false});        
         } else 
         if (e.target && e.target.classList.contains("todo-close")){           
-          setData("DELETE", todosUrl, e.target.parentNode.dataset.id);
-          renderTodos();
+          setData("DELETE", todosUrl, e.target.parentNode.dataset.id);          
         }    
       });
     }
@@ -113,8 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Заповніть форму з задачею!!!");
       return false;
     }   
-    setData("POST", todosUrl, null, {user: chooseUserSelect.value, todo: todoTextInput.value, status: false});
-    renderTodos();
+    setData("POST", todosUrl, null, {user: +chooseUserSelect.value, todo: todoTextInput.value, status: false});
     addTodoForm.reset();
   });
 });

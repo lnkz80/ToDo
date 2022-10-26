@@ -1,108 +1,133 @@
 $base-color: rgb(172, 62, 172);
 $done-color: rgb(45, 189, 5);
 
-/* header .text {
-    line-height: 1.8em;
-} */
-/* 
-main form .btn-bd-primary {
-    --bs-btn-bg: var(--bd-purple);
-} */
-/* .chkbox:hover .unchecked, .chkbox .checked {
-    display: none;
+html {
+	font-size: 14px;
 }
 
-.chkbox:hover .checked {
-    display: inline;
-} */
-/* .unchecked */
-html {
-    font-size: 14px;
-}
 body {
 	margin: 0;
-	padding: 0;	
+	padding: 0;
 }
+
 .wrapper {
 	margin: 0 auto;
-    padding: 0 20px;
+	padding: 0 20px;
 	width: 700px;
 }
+
 header {
 	background-color: $base-color;
 	padding: 20px;
 	color: #fff;
 	text-align: center;
 	font-size: 1.8rem;
-	font-family: sans-serif, "Microsoft New Tai Lue";
+	font-family: sans-serif, 'Microsoft New Tai Lue';
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: stretch;
 	border-radius: 0 0 10px 10px;
+
 	div {
 		margin-right: 10px;
 		vertical-align: middle;
 	}
-	.ico {        
+
+	.ico {
 		padding: 0.5rem;
 		color: $base-color;
 		background-color: #fff;
-		box-shadow: 3px 4px 1px rgba(0,0,0,.2);
+		box-shadow: 3px 4px 1px rgba(0, 0, 0, 0.2);
 		line-height: 1rem;
 	}
 }
+
 main {
 	form {
 		display: flex;
 		flex-direction: column;
+
 		div {
 			margin-top: 10px;
 		}
+
 		div.confirmTodo {
 			align-self: center;
 		}
+
+		.confirm-button {
+			padding: 10px;
+			border: 2px solid rgba($base-color, 0.7);
+			background-color: rgba($base-color, 0.1);
+			color: rgba($base-color, 0.7);
+			font-weight: 700;
+			border-radius: 7px;
+
+			&:hover {
+				background-color: rgba($base-color, 0.9);
+				color: #fff;
+			}
+		}
+
+
 	}
+
 	.todoContent {
-		border: 3px solid rgba($base-color, .3);
+		border: 3px solid rgba($base-color, 0.3);
 		border-radius: 10px;
 		margin-top: 20px;
 		padding: 20px;
-		margin-left: 0;        
+		margin-left: 0;
 		list-style-type: none;
-        // overflow: hidden;
+		// overflow: hidden;
 		font-size: 1.1rem;
+
 		li {
-            // padding: 7px;
-            text-indent: -13px;
-            text-align: justify;
-            padding: 7px 0px 7px 27px;
+			// padding: 7px;
+			text-indent: -13px;
+			text-align: justify;
+			padding: 7px 0px 7px 27px;
 			border-bottom: 1px dashed #ccc;
-			color: #aaa;            
+			color: #999;
+
 			&:hover {
-				.unchecked {
-					color: rgb(0,0,0,.6);
-					cursor: pointer;
-				}
-				color: rgb(0,0,0,.6);
+				color: rgb(0, 0, 0, 0.6);
 				cursor: pointer;
 			}
+
 			&:last-child {
 				border: none;
 			}
+
 			i {
 				padding-right: 10px;
+			}
+
+			i.fa-arrow-right-long {
+				margin-left: 13px;
 			}
 		}
 	}
 }
+
 .todo-done {
 	color: $done-color;
 }
-.todo-close {
-	color: rgba(0,0,0,.2);
-	margin-left: 20px;
+
+.todo-done-light {
+	color: rgba($done-color, .7);
+
 	&:hover {
-		color: rgba($base-color, .8);
+		color: $done-color;
+	}
+}
+
+.todo-close {
+	color: rgba(0, 0, 0, 0.2);
+	margin-left: 20px;
+
+	&:hover {
+		color: rgba($base-color, 0.8);
 	}
 }

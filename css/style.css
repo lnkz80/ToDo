@@ -1,18 +1,3 @@
-/* header .text {
-    line-height: 1.8em;
-} */
-/* 
-main form .btn-bd-primary {
-    --bs-btn-bg: var(--bd-purple);
-} */
-/* .chkbox:hover .unchecked, .chkbox .checked {
-    display: none;
-}
-
-.chkbox:hover .checked {
-    display: inline;
-} */
-/* .unchecked */
 html {
   font-size: 14px;
 }
@@ -63,6 +48,18 @@ main form div {
 main form div.confirmTodo {
   align-self: center;
 }
+main form .confirm-button {
+  padding: 10px;
+  border: 2px solid rgba(172, 62, 172, 0.7);
+  background-color: rgba(172, 62, 172, 0.1);
+  color: rgba(172, 62, 172, 0.7);
+  font-weight: 700;
+  border-radius: 7px;
+}
+main form .confirm-button:hover {
+  background-color: rgba(172, 62, 172, 0.9);
+  color: #fff;
+}
 main .todoContent {
   border: 3px solid rgba(172, 62, 172, 0.3);
   border-radius: 10px;
@@ -77,13 +74,9 @@ main .todoContent li {
   text-align: justify;
   padding: 7px 0px 7px 27px;
   border-bottom: 1px dashed #ccc;
-  color: #aaa;
+  color: #999;
 }
 main .todoContent li:hover {
-  color: rgba(0, 0, 0, 0.6);
-  cursor: pointer;
-}
-main .todoContent li:hover .unchecked {
   color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
 }
@@ -93,8 +86,18 @@ main .todoContent li:last-child {
 main .todoContent li i {
   padding-right: 10px;
 }
+main .todoContent li i.fa-arrow-right-long {
+  margin-left: 13px;
+}
 
 .todo-done {
+  color: rgb(45, 189, 5);
+}
+
+.todo-done-light {
+  color: rgba(45, 189, 5, 0.7);
+}
+.todo-done-light:hover {
   color: rgb(45, 189, 5);
 }
 
