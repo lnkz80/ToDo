@@ -31,13 +31,13 @@
       "id": 1,
       "user": 1,
       "todo": "Update servers",
-      "status": true
+      "status": false
     },
     {
       "id": 2,
       "user": 5,
       "todo": "Count salary",
-      "status": false
+      "status": true
     },
     {
       "id": 3,
@@ -49,13 +49,19 @@
       "id": 4,
       "user": 3,
       "todo": "Call to client",
-      "status": false
+      "status": true
     },
     {
       "id": 5,
       "user": 4,
       "todo": "Receive a parcel with goods from the supplier",
       "status": false
+    },
+    {
+      "user": 1,
+      "todo": "123",
+      "status": false,
+      "id": 6
     }
   ]
 }

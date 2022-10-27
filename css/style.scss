@@ -52,11 +52,11 @@ main {
 			margin-top: 10px;
 		}
 
-		div.confirmTodo {
+		div.todo-submit {
 			align-self: center;
 		}
 
-		.confirm-button {
+		.todo-submit__button {
 			padding: 10px;
 			border: 2px solid rgba($base-color, 0.7);
 			background-color: rgba($base-color, 0.1);
@@ -71,7 +71,7 @@ main {
 		}
 	}
 
-	.todoContent {
+	.todo-content {
 		border: 3px solid rgba($base-color, 0.3);
 		border-radius: 10px;
 		margin-top: 20px;
@@ -87,10 +87,9 @@ main {
 			text-align: justify;
 			padding: 7px 0px 7px 27px;
 			border-bottom: 1px dashed #ccc;
-			color: #999;
 
+			// color: #999;	
 			&:hover {
-				color: rgb(0, 0, 0, 0.6);
 				cursor: pointer;
 			}
 
@@ -113,7 +112,15 @@ main {
 	color: $done-color;
 }
 
-.todo-done-light {
+.todo-undone--light {
+	color: #999;
+
+	&:hover {
+		color: rgb(0, 0, 0, 0.6);
+	}
+}
+
+.todo-done--light {
 	color: rgba($done-color, .7);
 
 	&:hover {

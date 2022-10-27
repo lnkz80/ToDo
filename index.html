@@ -33,25 +33,24 @@
         <div class="text">ToDo list</div>
       </header>
       <main>
-        <form id="addTodoForm">
-          <div class="todoText">
+        <form autocomplete="off">
+          <div>
             <input
-              class="form-control"
-              id="todoTextInput"
-              name="todoTextInput"
+              class="form-control"              
+              name="todo"
               type="text"
               placeholder="Введіть нову задачу"
             />
           </div>
-          <div class="selectUser input-group">
-            <label class="input-group-text" for="chooseUserSelect">Оберіть користувача</label>
-            <select class="form-select" id="chooseUserSelect" name="chooseUserSelect"></select>
+          <div class="input-group">
+            <label class="input-group-text">Оберіть користувача</label>
+            <select class="form-select" name="user"></select>
           </div>
-          <div class="confirmTodo">
-            <input class="confirm-button" id="confirmTodoBtn" type="button" value="Додати задачу" />
+          <div class="todo-submit">
+            <button class="todo-submit__button">Додати задачу</button>
           </div>
         </form>
-        <ul class="todoContent"></ul>
+        <ul class="todo-content"></ul>
       </main>
     </div>
 

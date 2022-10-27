@@ -45,10 +45,10 @@ main form {
 main form div {
   margin-top: 10px;
 }
-main form div.todo-submit {
+main form div.confirmTodo {
   align-self: center;
 }
-main form .todo-submit__button {
+main form .confirm-button {
   padding: 10px;
   border: 2px solid rgba(172, 62, 172, 0.7);
   background-color: rgba(172, 62, 172, 0.1);
@@ -56,11 +56,11 @@ main form .todo-submit__button {
   font-weight: 700;
   border-radius: 7px;
 }
-main form .todo-submit__button:hover {
+main form .confirm-button:hover {
   background-color: rgba(172, 62, 172, 0.9);
   color: #fff;
 }
-main .todo-content {
+main .todoContent {
   border: 3px solid rgba(172, 62, 172, 0.3);
   border-radius: 10px;
   margin-top: 20px;
@@ -69,22 +69,24 @@ main .todo-content {
   list-style-type: none;
   font-size: 1.1rem;
 }
-main .todo-content li {
+main .todoContent li {
   text-indent: -13px;
   text-align: justify;
   padding: 7px 0px 7px 27px;
   border-bottom: 1px dashed #ccc;
+  color: #999;
 }
-main .todo-content li:hover {
+main .todoContent li:hover {
+  color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
 }
-main .todo-content li:last-child {
+main .todoContent li:last-child {
   border: none;
 }
-main .todo-content li i {
+main .todoContent li i {
   padding-right: 10px;
 }
-main .todo-content li i.fa-arrow-right-long {
+main .todoContent li i.fa-arrow-right-long {
   margin-left: 13px;
 }
 
@@ -92,17 +94,10 @@ main .todo-content li i.fa-arrow-right-long {
   color: rgb(45, 189, 5);
 }
 
-.todo-undone--light {
-  color: #999;
-}
-.todo-undone--light:hover {
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.todo-done--light {
+.todo-done-light {
   color: rgba(45, 189, 5, 0.7);
 }
-.todo-done--light:hover {
+.todo-done-light:hover {
   color: rgb(45, 189, 5);
 }
 
@@ -112,4 +107,4 @@ main .todo-content li i.fa-arrow-right-long {
 }
 .todo-close:hover {
   color: rgba(172, 62, 172, 0.8);
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style_mine.css.map */
