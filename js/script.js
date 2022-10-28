@@ -1,21 +1,16 @@
 "use strict";
 
-/* TODO:
-  * create functions that changes data on server
-  * addEventListeners
-*/
-
-// Globals
+//! ========================== Globals ============================================
 let users, todos = [];
 const todoList = document.querySelector('.todo-content'),
 userList = document.querySelector('.form-select'),
 form = document.querySelector('form');
 
-//Attach Events
+//! ========================== Attach Events ======================================
 document.addEventListener("DOMContentLoaded", appInit);
 form.addEventListener('submit', handleSubmit);
 
-// Basic Logic
+//! ========================== Basic Logic ========================================
 function getUser(userId){
   const user = users.find(item => item.id === userId);
   return user.name;
@@ -41,6 +36,8 @@ function renderTodo({id, user, todo, status}){
   const close = document.createElement('i');
   close.classList.add('todo-close', 'fa-solid', 'fa-xmark'); 
   
+  close.addEventListener('click', handleClose);
+
   li.prepend(checkBox);
   li.append(close);
   todoList.prepend(li);    
@@ -57,7 +54,18 @@ function toggleClasses(el, classes){
   classes.forEach(toggleClass => el.classList.toggle(toggleClass));
 }
 
-// Event Logic
+function  removeTodo(todoId){
+  //remove from array
+ todos = todos.filter(todo=>todo.id !== todoId);
+  const todo = todoList.querySelector(`[data-id="${todoId}"]`);
+  
+  todo.querySelector('.fa-square').removeEventListener('click', handleTodoChange);
+  todo.querySelector('.todo-close').removeEventListener('click', handleClose);
+
+  todo.remove();
+}
+
+//! ========================== Event Logic ===================================
 function appInit(){
   Promise.all([getAllTodos(), getAllUsers()])
   .then(data=>{
@@ -91,7 +99,13 @@ function handleTodoChange(e){
   changeTodoStatus(todoId, status);
 }
 
-  // Async Logic
+function handleClose(e){
+  // e.target.parentElement.remove(); //can use this instead of e.target
+  const todoId = e.target.parentElement.dataset.id;  
+  deleteTodo(todoId);
+}
+
+  //! ========================== Async Logic ======================================
   async function getAllTodos(){
     const res = await fetch("http://localhost:3000/todos");
     if (!res.ok){
@@ -126,4 +140,17 @@ function handleTodoChange(e){
       headers: {'Content-type': 'application/json'},
   });
     const data = await response.json();    
+  }
+
+  async function deleteTodo(id){
+    const response = await fetch(`http://localhost:3000/todos/${id}`,{ 
+      method: 'DELETE',
+      body: JSON.stringify({status}),
+      headers: {'Content-type': 'application/json'},
+    });
+    if(response.ok){
+      removeTodo(id);
+    } else {
+      //ERROR
+    }
   }
