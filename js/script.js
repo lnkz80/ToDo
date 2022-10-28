@@ -65,6 +65,10 @@ function  removeTodo(todoId){
   todo.remove();
 }
 
+function alertError(error){
+  alert(error.message);
+}
+
 //! ========================== Event Logic ===================================
 function appInit(){
   Promise.all([getAllTodos(), getAllUsers()])
@@ -107,50 +111,71 @@ function handleClose(e){
 
   //! ========================== Async Logic ======================================
   async function getAllTodos(){
-    const res = await fetch("http://localhost:3000/todos");
-    if (!res.ok){
-      throw new Error(`An error occured: ${res.status}`);
+    try {
+      const res = await fetch("http://localhost:3000/todos");
+      if (!res.ok){
+        throw new Error(`An error occured: ${res.status}`);
+      }
+      return await res.json();      
+    } catch (error) {
+      alertError(error);
     }
-    return await res.json();
   }
   
   async function getAllUsers(){
-    const res = await fetch("http://localhost:3000/users");
-    if (!res.ok){
-      throw new Error(`An error occured: ${res.status}`);
+    try {
+      const res = await fetch("http://localhost:3000/users");
+      if (!res.ok){
+        throw new Error(`An error occured: ${res.status}`);
+      }
+      return await res.json();      
+    } catch (error) {
+      alertError(error);
     }
-    return await res.json();
   }
 
   async function createTodo(todo){
-    const response = await fetch('http://localhost:3000/todos', {
-      method: 'POST',
-      body: JSON.stringify(todo),
-      headers: {'Content-type': 'application/json'},
-    });
-
-    const newTodo = await response.json();    
-    renderTodo(newTodo);
+    try {
+      const response = await fetch('http://localhost:3000/todos', {
+        method: 'POST',
+        body: JSON.stringify(todo),
+        headers: {'Content-type': 'application/json'},
+      });  
+      const newTodo = await response.json();    
+      renderTodo(newTodo);      
+    } catch (error) {
+      alertError(error);
+    }
   }
 
   async function changeTodoStatus(id, status){
-    const response = await fetch(`http://localhost:3000/todos/${id}`,{ 
-      method: 'PATCH',
-      body: JSON.stringify({status}),
-      headers: {'Content-type': 'application/json'},
-  });
-    const data = await response.json();    
+    try {
+      const response = await fetch(`http://localhost:3000/todos/${id}`,{ 
+        method: 'PATCH',
+        body: JSON.stringify({status}),
+        headers: {'Content-type': 'application/json'},
+    });
+      if(!response.ok){
+        throw new Error('Something went wrong...');
+      }      
+    } catch (error) {
+      alertError(error);
+    }      
   }
 
   async function deleteTodo(id){
-    const response = await fetch(`http://localhost:3000/todos/${id}`,{ 
-      method: 'DELETE',
-      body: JSON.stringify({status}),
-      headers: {'Content-type': 'application/json'},
-    });
-    if(response.ok){
-      removeTodo(id);
-    } else {
-      //ERROR
+    try{
+      const response = await fetch(`http://localhost:3000/todos/${id}`,{ 
+        method: 'DELETE',        
+        headers: {'Content-type': 'application/json'},
+      });
+      if(response.ok){
+        removeTodo(id);
+      } else {
+        //ERROR
+        throw new Error('Something went wrong...');
+      }
+    } catch(err){
+      alertError(err);
     }
   }

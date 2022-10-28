@@ -55,7 +55,7 @@
       "id": 5,
       "user": 4,
       "todo": "Receive a parcel with goods from the supplier",
-      "status": false
+      "status": true
     }
   ]
 }
